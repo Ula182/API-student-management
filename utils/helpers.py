@@ -5,15 +5,6 @@ from utils import core
 from fastapi import HTTPException
 from typing import List
 
-
-# def add_data(item):
-#     try:
-#         core.table.put_item(
-#             Item=item.dict(by_alias=True),
-#             ConditionExpression='attribute_not_exists(PK)'
-#         )
-#     except Exception:
-#         raise HTTPException(status_code=400, detail='Not Create')
     
 def add_data(items: List):
     with core.table.batch_writer(
