@@ -17,14 +17,6 @@ class StudentResp(StudentIn):
     pass
 
 
-class RequestStudent(
-    _domains_branch.ReqSampleName, _domains_branch.BranchName,
-    _domains_branch.ReqSampleDeadLine, _domains_branch.ReqSampleStatus,
-    _domains_sample.SampleFile, _domains_branch.ReqSampleCreateAt
-):
-    pass
-
-
 class StudentRespSample(
     _domains_branch.ReqSampleName, _domains_branch.BranchName, 
     _domains_branch.ReqSampleDeadLine, _domains_branch.ReqSampleStatus,
@@ -33,8 +25,14 @@ class StudentRespSample(
     pass
 
 
+class RequestStudent(
+   StudentRespSample, _domains_branch.ReqSampleCreateAt
+):
+    pass
+
+
 class StudentRespReqIn(
-    _domains_sample.SampleName, _domains_branch.BranchName, 
+    _domains_sample.SampleName, _domains_branch.BranchName,
     _domains_student.StudentId
 ):
     pass

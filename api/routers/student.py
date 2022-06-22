@@ -42,8 +42,4 @@ def resp_request_student(
     request: student_schema.StudentRespReqIn
 ):
     return student_service.resp_request_student(request)
-# def resp_request_student(
-#     request: student_schema.StudentRespReqIn,
-#     file: UploadFile = File(...)
-# ):
-#     return student_service.resp_request_student(request, file)
+

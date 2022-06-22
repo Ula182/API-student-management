@@ -2,7 +2,7 @@ from utils import core
 from fastapi import HTTPException
 
 
-def request_sample_student(branch_request):
+def request_sample_of_student(branch_request):
     try:
         core.table.put_item(
             Item=branch_request.dict(by_alias=True),

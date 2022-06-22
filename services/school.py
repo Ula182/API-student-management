@@ -1,4 +1,4 @@
-from db.data.school import get_school_info
+from db.data.school.get_school_info import get_school_info
 from db.entity.school import School, SchoolEmail
 from fastapi import HTTPException
 from utils import helpers, check_email_exist
@@ -13,11 +13,10 @@ def create_school(school_info: _school_schema.SchoolIn):
     school_dict = (school_info.dict(by_alias=True))
     school_email_db = SchoolEmail(**school_dict)
     school_info_db = School(**school_dict)
-    
-    helpers.add_data(school_info_db.dict(by_alias=True))
-    helpers.add_data(school_email_db.dict(by_alias=True))
-    raise HTTPException(status_code=200, detail='OK')
 
+    list = [school_email_db, school_info_db]
+    return helpers.add_data(list)
+    
 
 def get_school(school_name):
-    return get_school_info.get_school(school_name)
+    return get_school_info(school_name)

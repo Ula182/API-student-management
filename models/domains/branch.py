@@ -27,4 +27,4 @@ class ReqSampleDeadLine(BaseModel):
     
     
 class ReqSampleCreateAt(BaseModel):
-    create_at: str = Field(alias="CreateAt")
+    created_at: str = Field(alias="CreatedAt")

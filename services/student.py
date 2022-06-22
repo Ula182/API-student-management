@@ -1,39 +1,28 @@
-from db.data.student import (
-    get_student_info, get_student_request,
-    response_student_resquest
-)
+from db.data.student.get_student_info import get_student_info
+from db.data.student.get_student_request import get_request_of_student
+from db.data.student.response_student_resquest import resp_request_of_student
 from db.entity.student import Student
 from models.schemas import student as _student_schema
 from utils import get_request, helpers
 
 
-def create_student(student_info):
+def create_student(student_info: _student_schema.StudentIn):
     item = Student(**student_info.dict(by_alias=True))
-    return helpers.add_data(item.dict(by_alias=True))
+    return helpers.add_data([item])
 
 
-def get_student(student_id):
-    return get_student_info.get_student(student_id)
+def get_student(student_id: str):
+    return get_student_info(student_id)
 
 
-def get_request_student(student_id):
-    return get_student_request.get_request_student(student_id)
+def get_request_student(student_id: str):
+    return get_request_of_student(student_id)
 
 
 def resp_request_student(
     request: _student_schema.StudentRespReqIn
 ):
     request_student = get_request.get_req_student(request)
-    return response_student_resquest.resp_request_student(
+    return resp_request_of_student(
         request_student
     )
-
-# def resp_request_student(
-#     request: _student_schema.StudentRespReqIn,
-#     file: UploadFile
-# ):
-#     request_student = get_req_student(request)
-#     return response_student_resquest.resp_request_student(
-#         request_student,
-#         file
-#     )

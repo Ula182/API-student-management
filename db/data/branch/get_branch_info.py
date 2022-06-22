@@ -4,7 +4,7 @@ from db.entity.branch import Branch
 from fastapi import HTTPException
 
 
-def get_branch(school_name: str):
+def get_branch_info(school_name: str) -> dict:
     pk = Branch.get_pk(school_name)
     sk_prefix = 'BRANCH#'
     response = core.table.query(
@@ -14,4 +14,4 @@ def get_branch(school_name: str):
     items = response.get('Items', [])
     if not items:
         raise HTTPException(status_code=404, detail='Not Found')
-    return items
+    return items[0]

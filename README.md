@@ -2,7 +2,7 @@
 uvicorn api.main:app --reload
 
 <!-- Create table on AWS console -->
-Go to aws console, select dynamodb and create table named Orders
+Go to aws console, select dynamodb and create table named Sample
 
 <!-- Enter api docs -->
 http://127.0.0.1:8000/docs

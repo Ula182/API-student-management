@@ -7,7 +7,7 @@ from utils import helpers
 
 class BaseEntityCreatedAt(BaseModel):
     created_at: datetime = Field(
-        default_factory=helpers.get_date_time, alias='CreateAt')
+        default_factory=helpers.get_date_time, alias='CreatedAt')
     
     
 class BaseEntityFile(BaseModel):
